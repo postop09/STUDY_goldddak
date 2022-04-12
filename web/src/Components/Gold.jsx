@@ -37,9 +37,7 @@ export default function Gold() {
   async function fetchPuuid() {
     console.log('소환사 이름 목록', userData);
     for (let i = 0; i < userData.length; i++) {
-      const res = await axios.get(`/lol/summoner/v4/summoners/by-name/${userData[i]}`, {
-        mode: 'cors',
-      });
+      const res = await axios.get(`/lol/summoner/v4/summoners/by-name/${userData[i]}`);
       console.log(res.data);
       setPuuid((prev) => [...prev, res.data.puuid]);
     }
