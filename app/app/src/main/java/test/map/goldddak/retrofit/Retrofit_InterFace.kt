@@ -1,13 +1,16 @@
 package test.map.goldddak.retrofit
 
+import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import test.map.goldddak.Riot_URL
+import test.map.goldddak.Riot_URL.MATCH_INFO
 import test.map.goldddak.model.EntireLeageModel
 import test.map.goldddak.model.EntireLeageModelItem
+import test.map.goldddak.model.MatchID_Model
 import test.map.goldddak.model.SummonerModel
 
 interface Retrofit_InterFace {
@@ -31,6 +34,19 @@ interface Retrofit_InterFace {
         @Query("api_key") api_key: String,
 
     ): Response<EntireLeageModel>
+
+    @GET(Riot_URL.MATCH_ID)
+    suspend fun matchidcall(
+        @Path("puuid") puuid:String,
+        @Query("api_key") api_key: String,
+    ) : Response<MatchID_Model>
+
+
+    @GET(MATCH_INFO)
+    suspend fun matchinfocall(
+        @Path("matchId")matchId:String,
+        @Query("api_key") api_key: String,
+    ) :Response<JsonElement>
 
 
     @GET(Riot_URL.SUMMNER_URL)

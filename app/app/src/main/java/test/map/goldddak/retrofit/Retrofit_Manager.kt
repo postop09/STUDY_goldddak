@@ -3,7 +3,9 @@ package test.map.goldddak.retrofit
 import android.util.Log
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.Retrofit
 import test.map.goldddak.Riot_URL.API_KEY
+import test.map.goldddak.Riot_URL.RIOT_ASIA_URL
 import test.map.goldddak.Riot_URL.RIOT_BASE_URL
 import test.map.goldddak.Riot_URL.TAG
 import test.map.goldddak.model.*
@@ -19,7 +21,10 @@ class Retrofit_Manager {
         Retrofit_Client.getClient(RIOT_BASE_URL).create(Retrofit_InterFace::class.java)
 
 
-    suspend fun SummonerCall(summnoername: String) {
+    //MatchId를 불러오기 위해서는 베이스URL이 바뀌어서 새로운 객체선언
+    private val asiaInterface : Retrofit_InterFace=
+        Retrofit_Client.getClient(RIOT_ASIA_URL).create(Retrofit_InterFace::class.java)
+    suspend fun SummonerCall(summnoername: String, puuid:(String)->Unit) {
         val call = retrofitInterface.summonerCall(
             summoner = summnoername,
             api_key = API_KEY
@@ -27,7 +32,8 @@ class Retrofit_Manager {
 
         if (call.isSuccessful) {
             val summonerpuuid = call.body()!!.puuid.toString()
-            Log.d(TAG, "Manager_SummonerCall: $summonerpuuid")
+            puuid(summonerpuuid)
+
         }
     }
 
@@ -102,6 +108,16 @@ class Retrofit_Manager {
 //        }
 
 
+    }
+
+    suspend fun MatchIdCall(puuid:String){
+        val call = asiaInterface.matchidcall(puuid, API_KEY)
+        if(call.isSuccessful){
+            Log.d(TAG, "MatchIdCall: ${call.body()}")
+        }else
+        {
+            Log.d(TAG, "에잉: affasf")
+        }
     }
 
     fun testsummonercall(summnoername: String) {

@@ -36,45 +36,72 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 withContext(Dispatchers.Main) {
                     Retrofit_Manager.retrofitManager.EntireLeageCall(totalmodel = {it->
                         Log.d(TAG, "testleage: $it")
+                        Log.d(TAG, "으아아아아앙아ㅏ: ${it.get(0).goldSummonerName.get(0).goldSummonerName}")
+
+                        var testname = it.get(0).goldSummonerName.get(0).goldSummonerName!!
+//                       CallMatchId("17_Z_Yc9PEi0Vusf7X8zhGopyl7NbIlbkZuIE1Imio2ZV-inmQHovgTf-mD1b4n_PqnaSg2Lo4DwEA")
+                        Callmatchrecord(testname)
+
+
+
+
+
 
                         for(i in it.indices){
-                            val goldsummonername = it.get(i).goldSummonerName.get(i).goldSummonerName!!
+                            val goldsummonername = it.get(1).goldSummonerName.get(i).goldSummonerName!!
 //                            Log.d(TAG, "CallleageSummonerInfo: $goldsummonername")
 
                             val silversummonername = it.get(i).silverSummonerName.get(i).silverSummonerName!!
 
                             val bronzesummonername = it.get(i).bronzeSummonerName.get(i).bronzeSummonerName!!
 
-                            CallSummonerpuuid(goldsummonername)
+//                            CallSummonerpuuid(goldsummonername)
 //                            val silverPuuid= CallSummonerpuuid(silversummonername)
 //                            val bronzePuuid = CallSummonerpuuid(bronzesummonername)
-
-
-
                         }
                     })
 
 
                 }
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
 
                 Log.d(TAG, "testleage: $e")
             }
         }
     }
 
-    private fun CallSummonerpuuid(summonerName:String) {
+    private fun CallMatchId(summonerpuuid:String){
+        launch(coroutineContext) {
+            try {
+                withContext(Dispatchers.Main){
+                    Retrofit_Manager.retrofitManager.MatchIdCall(summonerpuuid)
+                }
+            }catch (t:Throwable){
+                Log.d(TAG, "CallMatchId: $t")
+            }
+        }
+
+    }
+
+    //서머너 이름을 입력하면 해당 소환사의 MATCHID를 불러옴
+    private fun Callmatchrecord(summonerName:String)  {
 
         launch(coroutineContext) {
             try {
                 withContext(Dispatchers.Main) {
-                    Retrofit_Manager.retrofitManager.SummonerCall(summonerName)
+                    Retrofit_Manager.retrofitManager.SummonerCall(summonerName) {
+//                        Log.d(TAG, "Callmatchrecord: $it")
+                        CallMatchId(it)
+
+                    }
 
                 }
-            } catch (e: Exception) {
-                Log.d(TAG, "testsummonerError: $e")
+            } catch (t: Throwable) {
+                Log.d(TAG, "testsummonerError: $t")
             }
         }
+
+
     }
 
 

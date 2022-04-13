@@ -18,3 +18,7 @@ data class BronzeModel(
     val bronzeSummonerName:String?
 )
 
+data class GoldpuuidModel(
+    var goldpuuid:String
+)
+
