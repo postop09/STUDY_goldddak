@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import axios from '../APIs/axios';
-// import axios from 'axios';
 import requests from '../APIs/requests';
 
 export default function Gold() {
   // summonerName
   const [userData, setUserData] = useState([]);
+  const [puuid, setPuuid] = useState([]);
+  const [matchId, setMatchId] = useState([]);
+  const [gameRecord, setGameRecord] = useState([]);
+
   async function fetchUserData() {
     const resG1 = await axios.get(requests.fetchG1Data);
     const summonersG1 = resG1.data.slice(0, 8);
@@ -31,34 +34,19 @@ export default function Gold() {
     summonersG4.map((summoner) => {
       setUserData((prev) => [...prev, summoner.summonerName]);
     })
-  }
-  // puuId
-  const [puuid, setPuuid] = useState([]);
-  async function fetchPuuid() {
-    console.log('소환사 이름 목록', userData);
     for (let i = 0; i < userData.length; i++) {
-      const res = await axios.get(`/lol/summoner/v4/summoners/by-name/${userData[i]}`);
-      console.log(res.data);
-      setPuuid((prev) => [...prev, res.data.puuid]);
+      const puuIdRes = await axios.get(`/lol/summoner/v4/summoners/by-name/${userData[i]}`);
+      console.log(puuIdRes.data);
+      setPuuid((prev) => [...prev, puuIdRes.data.puuid]);
     }
-  }
-  // matchId
-  const [matchId, setMatchId] = useState([]);
-  async function fetchMatchId() {
-    // console.log('소환사 puuId', puuid);
     for (let i = 0; i < puuid.length; i++) {
-      const res = await axios.get(`https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid[i]}/ids?start=0&count=2`);
-      console.log(res.data);
-      setMatchId((prev) => [...prev, ...res.data])
+      const matchIdRes = await axios.get(`https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid[i]}/ids?start=0&count=2`);
+      console.log(matchIdRes.data);
+      setMatchId((prev) => [...prev, ...matchIdRes.data])
     }
-  }
-  // 
-  const [gameRecord, setGameRecord] = useState([]);
-  async function fetchGameRecord() {
-    console.log('소환사 matchId', matchId);
     for (let i = 0; i < matchId.length; i++) {
-      const res = await axios.get(`https://asia.api.riotgames.com/lol/match/v5/matches/${matchId[i]}`);
-      const participants = res.data.info.participants;
+      const gameRecordRes = await axios.get(`https://asia.api.riotgames.com/lol/match/v5/matches/${matchId[i]}`);
+      const participants = gameRecordRes.data.info.participants;
       
       participants.map((participant) => {
         let totalData = {
@@ -73,6 +61,18 @@ export default function Gold() {
       });
     }
   }
+  // // puuId
+  // async function fetchPuuid() {
+  //   console.log('소환사 이름 목록', userData);
+  // }
+  // // matchId
+  // async function fetchMatchId() {
+  //   console.log('소환사 puuId', puuid);
+  // }
+  // // gameRecord
+  // async function fetchGameRecord() {
+  //   console.log('소환사 matchId', matchId);
+  // }
 
   const [Aatrox, setAatrox] = useState([]);
   function AatroxData() {
@@ -84,14 +84,14 @@ export default function Gold() {
   }
   return (
     <div>
-      <button onClick={fetchUserData}>GET userData</button>
+      <button onClick={fetchUserData}>GET data</button>
       <br />
-      <button onClick={fetchPuuid}>GET puuId</button>
+      {/* <button onClick={fetchPuuid}>GET puuId</button> */}
       <br />
-      <button onClick={fetchMatchId}>GET matchId</button>
+      {/* <button onClick={fetchMatchId}>GET matchId</button> */}
       <div>
-        <button onClick={fetchGameRecord}>GET gameRecord</button>
-        <button onClick={() => {console.log(gameRecord);}}>CHECK gameRecord</button>
+        {/* <button onClick={fetchGameRecord}>GET gameRecord</button> */}
+        {/* <button onClick={() => {console.log(gameRecord);}}>CHECK gameRecord</button> */}
       </div>
       <br />
       <div>

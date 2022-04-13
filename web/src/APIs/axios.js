@@ -3,7 +3,7 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://kr.api.riotgames.com',
   params: {
-    api_key: 'RGAPI-b25b7a84-53d1-4a07-b95b-0e12d09d490c',
+    api_key: 'RGAPI-135ebda6-ff01-4545-a743-176291f12b33',
   },
 });
 
