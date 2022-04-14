@@ -13,6 +13,6 @@ object Riot_URL {
 
     const val MATCH_INFO = "/lol/match/v5/matches/{matchId}"
 
-    const val API_KEY = "RGAPI-ea21173e-8466-4da8-9b18-64161f1291be"
+    const val API_KEY = "RGAPI-e5463bac-b13b-4ac5-be18-bc3f188cba7e"
     const val TAG:String = "로그"
 }

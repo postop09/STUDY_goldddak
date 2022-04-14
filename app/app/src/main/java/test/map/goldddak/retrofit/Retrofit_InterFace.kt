@@ -12,6 +12,7 @@ import test.map.goldddak.model.EntireLeageModel
 import test.map.goldddak.model.EntireLeageModelItem
 import test.map.goldddak.model.MatchID_Model
 import test.map.goldddak.model.SummonerModel
+import test.map.goldddak.model.matchinfo_model.MatchInfo_Model
 
 interface Retrofit_InterFace {
 
@@ -46,7 +47,7 @@ interface Retrofit_InterFace {
     suspend fun matchinfocall(
         @Path("matchId")matchId:String,
         @Query("api_key") api_key: String,
-    ) :Response<JsonElement>
+    ) :Response<MatchInfo_Model>
 
 
     @GET(Riot_URL.SUMMNER_URL)

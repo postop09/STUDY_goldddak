@@ -120,6 +120,36 @@ class Retrofit_Manager {
         }
     }
 
+    suspend fun MatchINfoCall(matchid:String){
+        val call = asiaInterface.matchinfocall(matchid, API_KEY )
+
+        if(call.isSuccessful){
+//            Log.d(TAG, "MatchINfoCall: ${call.body()}")
+
+
+
+            //플레이한 챔피언 이름
+            for(i in 0..9){
+                val championName = call.body()!!.info?.participants?.get(i)?.championName
+                Log.d(TAG, "MatchINfoCall$i : $championName")
+                //킬/뎃/어시
+                val kda = call.body()!!.info?.participants?.get(i)?.challenges!!.kda
+
+                //승리여부
+                val win = call.body()!!.info!!.participants!!.get(i).win
+
+            }
+
+
+
+//
+//            챔피언에게 가한 피해
+//
+//            요종도 뽑아버림
+        }
+
+    }
+
     fun testsummonercall(summnoername: String) {
         val call = retrofitInterface.testsummonerCall(summnoername, API_KEY)
 
