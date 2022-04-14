@@ -14,6 +14,7 @@ class SilverFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = SilverFragmentBinding.inflate(inflater,container,false)
         return binding.root
     }

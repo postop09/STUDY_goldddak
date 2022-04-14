@@ -14,6 +14,7 @@ class GoldFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = GoldFragmentBinding.inflate(inflater,container,false)
         return binding.root
     }

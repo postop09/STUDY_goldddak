@@ -26,6 +26,7 @@
             android:layout_height="200dp"/>
 
         <TextView
+
             android:id="@+id/InViewTopTextView"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumgothic_regular"
