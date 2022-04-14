@@ -34,20 +34,32 @@ export default function Gold() {
     summonersG4.map((summoner) => {
       setUserData((prev) => [...prev, summoner.summonerName]);
     })
+  }
+
+  // puuId
+  async function fetchPuuid() {
+    console.log('소환사 이름 목록', userData);
     for (let i = 0; i < userData.length; i++) {
       const puuIdRes = await axios.get(`/lol/summoner/v4/summoners/by-name/${userData[i]}`);
       console.log(puuIdRes.data);
       setPuuid((prev) => [...prev, puuIdRes.data.puuid]);
     }
+  }
+  // matchId
+  async function fetchMatchId() {
+    console.log('소환사 puuId', puuid);
     for (let i = 0; i < puuid.length; i++) {
       const matchIdRes = await axios.get(`https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid[i]}/ids?start=0&count=2`);
       console.log(matchIdRes.data);
       setMatchId((prev) => [...prev, ...matchIdRes.data])
     }
+  }
+  // gameRecord
+  async function fetchGameRecord() {
+    console.log('소환사 matchId', matchId);
     for (let i = 0; i < matchId.length; i++) {
       const gameRecordRes = await axios.get(`https://asia.api.riotgames.com/lol/match/v5/matches/${matchId[i]}`);
       const participants = gameRecordRes.data.info.participants;
-      
       participants.map((participant) => {
         let totalData = {
           championName: participant.championName,
@@ -61,18 +73,13 @@ export default function Gold() {
       });
     }
   }
-  // // puuId
-  // async function fetchPuuid() {
-  //   console.log('소환사 이름 목록', userData);
-  // }
-  // // matchId
-  // async function fetchMatchId() {
-  //   console.log('소환사 puuId', puuid);
-  // }
-  // // gameRecord
-  // async function fetchGameRecord() {
-  //   console.log('소환사 matchId', matchId);
-  // }
+  
+  function fetchCoreData() {
+    fetchUserData();
+    setTimeout(fetchPuuid, 2000); 
+    setTimeout(fetchMatchId, 4000);
+    setTimeout(fetchGameRecord, 7000);
+  }
 
   const [Aatrox, setAatrox] = useState([]);
   function AatroxData() {
@@ -84,14 +91,17 @@ export default function Gold() {
   }
   return (
     <div>
+      <button onClick={fetchCoreData}>GET Total</button>
+      <br />
+      <br />
       <button onClick={fetchUserData}>GET data</button>
       <br />
-      {/* <button onClick={fetchPuuid}>GET puuId</button> */}
+      <button onClick={fetchPuuid}>GET puuId</button>
       <br />
-      {/* <button onClick={fetchMatchId}>GET matchId</button> */}
+      <button onClick={fetchMatchId}>GET matchId</button>
       <div>
-        {/* <button onClick={fetchGameRecord}>GET gameRecord</button> */}
-        {/* <button onClick={() => {console.log(gameRecord);}}>CHECK gameRecord</button> */}
+        <button onClick={fetchGameRecord}>GET gameRecord</button>
+        <button onClick={() => {console.log(gameRecord);}}>CHECK gameRecord</button>
       </div>
       <br />
       <div>
