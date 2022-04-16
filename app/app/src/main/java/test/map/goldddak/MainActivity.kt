@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private fun CallleageSummonerInfo() {
         launch(coroutineContext) {
             try {
+
                 withContext(Dispatchers.Main) {
                     Retrofit_Manager.retrofitManager.EntireLeageCall(totalmodel = {it->
                         Log.d(TAG, "testleage: $it")
