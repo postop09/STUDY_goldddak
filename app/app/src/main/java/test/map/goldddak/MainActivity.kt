@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
     }
 
+
     private fun setFragment() {
         binding.bottomMenu.run {
             setOnNavigationItemSelectedListener {

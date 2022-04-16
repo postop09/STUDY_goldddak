@@ -20,37 +20,49 @@
 
         <View
             android:id="@+id/goldtopview"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/goldTitleTextView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="200dp"
+            android:layout_below="@id/goldTitleTextView"
+            android:layout_marginTop="9dp"
+            android:background="@color/skyblue" />
 
         <TextView
-
             android:id="@+id/InViewTopTextView"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumgothic_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/goldtopview"
+            android:layout_alignTop="@id/goldtopview"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/nanumgothic_regular"
+            android:gravity="center"
             android:text="이기고 싶냐? 그럼 이챔프를 해라"
-            android:layout_alignTop="@id/goldtopview"
-            android:layout_alignStart="@id/goldtopview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/black" />
 
         <ImageView
-            android:src="@drawable/ic_baseline_home_24"
-            android:layout_margin="10dp"
-            android:layout_below="@id/InViewTopTextView"
+            android:id="@+id/championImageView"
             android:layout_width="60dp"
-            android:layout_height="60dp"/>
+            android:layout_height="60dp"
+            android:layout_below="@id/InViewTopTextView"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_baseline_home_24" />
+
+        <TextView
+            android:id="@+id/championNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/championImageView"
+            android:layout_toEndOf="@id/championImageView"
+            android:text="champion Name" />
 
 
-
-
-
-
-
+        <TextView
+            android:layout_marginTop="10dp"
+            android:text="나르"
+            android:layout_toEndOf="@id/championImageView"
+            android:layout_below="@+id/championNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
     </RelativeLayout>
