@@ -1,5 +1,5 @@
 # goldddak
-From Bronze To Gold, 브실골이여 고개를 들어라,,, 승리를 쟁취하라,,,
+From Bronze To Gold, 브실골이여 고개를 들어라,,, 승리를 쟁취하라,,
 
 ## Asset/Convention
 ![BSG 기획](https://user-images.githubusercontent.com/93017923/162559856-be90150a-94ed-430a-8bee-8875f5f44670.PNG)
