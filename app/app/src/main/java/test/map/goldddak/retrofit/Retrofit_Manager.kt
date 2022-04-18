@@ -22,9 +22,10 @@ class Retrofit_Manager {
 
 
     //MatchId를 불러오기 위해서는 베이스URL이 바뀌어서 새로운 객체선언
-    private val asiaInterface : Retrofit_InterFace=
+    private val asiaInterface: Retrofit_InterFace =
         Retrofit_Client.getClient(RIOT_ASIA_URL).create(Retrofit_InterFace::class.java)
-    suspend fun SummonerCall(summnoername: String, puuid:(String)->Unit) {
+
+    suspend fun SummonerCall(summnoername: String, puuid: (String) -> Unit) {
         val call = retrofitInterface.summonerCall(
             summoner = summnoername,
             api_key = API_KEY
@@ -110,42 +111,46 @@ class Retrofit_Manager {
 
     }
 
-    suspend fun MatchIdCall(puuid:String){
+    suspend fun MatchIdCall(puuid: String,dd:(List<String>)->Unit) {
         val call = asiaInterface.matchidcall(puuid, API_KEY)
-        if(call.isSuccessful){
+        if (call.isSuccessful) {
             Log.d(TAG, "MatchIdCall: ${call.body()}")
-        }else
-        {
+            var body = call.body()!!
+
+            dd(body)
+
+
+        } else {
             Log.d(TAG, "에잉: affasf")
         }
     }
 
-    suspend fun MatchINfoCall(matchid:String){
-        val call = asiaInterface.matchinfocall(matchid, API_KEY )
+    suspend fun MatchINfoCall(matchid: String) {
+        val call = asiaInterface.matchinfocall(matchid, API_KEY)
 
-        if(call.isSuccessful){
+        if (call.isSuccessful) {
 //            Log.d(TAG, "MatchINfoCall: ${call.body()}")
 
 
-
             //플레이한 챔피언 이름
-            for(i in 0..9){
+            for (i in 0..9) {
                 val championName = call.body()!!.info?.participants?.get(i)?.championName
-                Log.d(TAG, "MatchINfoCall$i : $championName")
+
                 //킬/뎃/어시
                 val kda = call.body()!!.info?.participants?.get(i)?.challenges!!.kda
 
                 //승리여부
                 val win = call.body()!!.info!!.participants!!.get(i).win
-
+                Log.d(TAG, "MatchINfoCall$i : $championName , $win")
             }
-
 
 
 //
 //            챔피언에게 가한 피해
 //
 //            요종도 뽑아버림
+        } else {
+            Log.d(TAG, "MatchINfoCall: 요롱롱")
         }
 
     }

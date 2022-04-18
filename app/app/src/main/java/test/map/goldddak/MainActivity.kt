@@ -111,18 +111,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    private fun CallMatchId(summonerpuuid:String){
-        launch(coroutineContext) {
-            try {
-                withContext(Dispatchers.Main){
-                    Retrofit_Manager.retrofitManager.MatchIdCall(summonerpuuid)
-                }
-            }catch (t:Throwable){
-                Log.d(TAG, "CallMatchId: $t")
-            }
-        }
-
-    }
+//    private fun CallMatchId(summonerpuuid:String){
+//        launch(coroutineContext) {
+//            try {
+//                withContext(Dispatchers.Main){
+//                    Retrofit_Manager.retrofitManager.MatchIdCall(summonerpuuid)
+//                }
+//            }catch (t:Throwable){
+//                Log.d(TAG, "CallMatchId: $t")
+//            }
+//        }
+//
+//    }
 
     //서머너 이름을 입력하면 해당 소환사의 MATCHID를 불러옴
     private fun Callmatchrecord(summonerName:String)  {
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 withContext(Dispatchers.Main) {
                     Retrofit_Manager.retrofitManager.SummonerCall(summonerName) {
 //                        Log.d(TAG, "Callmatchrecord: $it")
-                        CallMatchId(it)
+//                        CallMatchId(it)
 
                     }
 

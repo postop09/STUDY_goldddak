@@ -1,5 +1,6 @@
 package test.map.goldddak.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import test.map.goldddak.Riot_URL.TAG
 import test.map.goldddak.model.TotalModel
+import test.map.goldddak.retrofit.Retrofit_Manager
 
 class TierViewModel:ViewModel() {
     private val job=Job()
@@ -20,9 +23,25 @@ class TierViewModel:ViewModel() {
 
 
 
-    fun setEntireLeaageCall(list: MutableList<TotalModel>) = uiScope.launch {
-        _totalmodel.value = list
+//    fun setEntireLeaageCall(list: MutableList<TotalModel>) = uiScope.launch {
+//        Retrofit_Manager.retrofitManager.EntireLeageCall(totalmodel = {
+//            Log.d(TAG, "setEntireLeaageCall: $totalmodel")
+//        })
+////        _totalmodel.value = list
+//    }
+
+
+
+
+
+    fun setEntireLeaageCall() = uiScope.launch {
+        Retrofit_Manager.retrofitManager.EntireLeageCall(totalmodel = {
+            Log.d(TAG, "setEntireLeaageCall: $it")
+        })
+//        _totalmodel.value = list
     }
+
+
 
 
 
