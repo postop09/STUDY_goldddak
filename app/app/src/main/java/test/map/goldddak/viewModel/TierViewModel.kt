@@ -23,14 +23,6 @@ class TierViewModel:ViewModel() {
 
 
 
-//    fun setEntireLeaageCall(list: MutableList<TotalModel>) = uiScope.launch {
-//        Retrofit_Manager.retrofitManager.EntireLeageCall(totalmodel = {
-//            Log.d(TAG, "setEntireLeaageCall: $totalmodel")
-//        })
-////        _totalmodel.value = list
-//    }
-
-
 
 
 
