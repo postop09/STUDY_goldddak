@@ -15,17 +15,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+
+
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nanumgothic_bold"
-        android:text="고개를 들거라"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/toptoolbar"
-        app:layout_constraintEnd_toEndOf="@id/toptoolbar"
-        app:layout_constraintStart_toStartOf="@id/toptoolbar"
-        app:layout_constraintTop_toTopOf="@id/toptoolbar" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/LoginTextView"
+            android:textColor="@color/white"
+            android:text="Login "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/mainFramgnet"

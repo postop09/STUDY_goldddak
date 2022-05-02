@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         job = Job()
 
 
-        setFragment()
+
+
+//        setFragment()
 
 
 
@@ -110,6 +112,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             }
         }
     }
+
+
 
 //    private fun CallMatchId(summonerpuuid:String){
 //        launch(coroutineContext) {
