@@ -66,4 +66,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
+    def billing_version = "3.0.0"
+    implementation "com.android.billingclient:billing:$billing_version"
+    // (선택사항) Kotlin을 사용하신다면 추가 해 주세요
+    implementation "com.android.billingclient:billing-ktx:$billing_version"
+
 }
