@@ -21,11 +21,16 @@ class RealMainActivity : AppCompatActivity() {
         realMainBinding = ActivityRealMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setTransparent()
+        binding.LoginTextView.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
-        Handler().postDelayed({
-            fadeanimation(this)
-        },1000)
+//        setTransparent()
+
+//        Handler().postDelayed({
+//            fadeanimation(this)
+//        },1000)
 
 
 
