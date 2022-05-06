@@ -1,69 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/goldTitleTextView"
+
+            android:id="@+id/titleTextView"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/nanumgothic_regular"
-            android:text="우리는 자랑스러운 골드다"
-            android:textSize="18sp" />
+            android:text="챔피언 분석"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <View
-            android:id="@+id/goldtopview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@id/goldTitleTextView"
-            android:layout_marginTop="9dp"
-            android:background="@color/skyblue" />
 
         <TextView
-            android:id="@+id/InViewTopTextView"
+            android:id="@+id/favoriteTextView"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/titleTextView"
+            android:layout_marginTop="20dp"
+            android:text="즐겨찾기한 챔피언"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chapFavoriteRecyclerView"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/goldtopview"
-            android:layout_alignTop="@id/goldtopview"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/nanumgothic_regular"
+            android:layout_below="@id/favoriteTextView" />
+
+
+        <LinearLayout
+            android:id="@+id/tireiconlayout"
             android:gravity="center"
-            android:text="이기고 싶냐? 그럼 이챔프를 해라"
-            android:textColor="@color/black" />
-
-        <ImageView
-            android:id="@+id/championImageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_below="@id/InViewTopTextView"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_baseline_home_24" />
-
-        <TextView
-            android:id="@+id/championNameTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/championImageView"
-            android:layout_toEndOf="@id/championImageView"
-            android:text="champion Name" />
+            android:layout_below="@id/chapFavoriteRecyclerView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chapFavoriteRecyclerView">
+
+                <View
+
+                    android:id="@+id/goldView"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/google_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/goldView"
+                    app:layout_constraintEnd_toEndOf="@id/goldView"
+                    app:layout_constraintStart_toStartOf="@id/goldView"
+                    app:layout_constraintTop_toTopOf="@id/goldView">
+
+                    <ImageView
+                        android:id="@+id/goldimageView"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/gold_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="골드"
+                        android:textColor="@color/black" />
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:text="나르"
-            android:layout_toEndOf="@id/championImageView"
-            android:layout_below="@+id/championNameTextView"
-            android:layout_width="wrap_content"
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chapFavoriteRecyclerView">
+
+                <View
+                    android:id="@+id/silverView"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/google_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/silverView"
+                    app:layout_constraintEnd_toEndOf="@id/silverView"
+                    app:layout_constraintStart_toStartOf="@id/silverView"
+                    app:layout_constraintTop_toTopOf="@id/silverView">
+
+                    <ImageView
+                        android:id="@+id/silverimageView"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/gold_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="실버"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chapFavoriteRecyclerView">
+
+                <View
+                    android:id="@+id/bronzeView"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/google_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/bronzeView"
+                    app:layout_constraintEnd_toEndOf="@id/bronzeView"
+                    app:layout_constraintStart_toStartOf="@id/bronzeView"
+                    app:layout_constraintTop_toTopOf="@id/bronzeView">
+
+                    <ImageView
+                        android:id="@+id/bronzeimageView"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/gold_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:text="브론즈"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tiretablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tireiconlayout">
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_below="@id/tiretablayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
 
+
     </RelativeLayout>
+
+
 </ScrollView>

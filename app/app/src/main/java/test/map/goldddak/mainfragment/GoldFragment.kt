@@ -1,5 +1,6 @@
 package test.map.goldddak.mainfragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenStarted
+import kotlinx.android.synthetic.main.customtab_button.view.*
 import kotlinx.coroutines.*
+import test.map.goldddak.R
 import test.map.goldddak.Riot_URL.TAG
 import test.map.goldddak.databinding.GoldFragmentBinding
 import test.map.goldddak.model.Mymatchid_model
@@ -19,6 +22,7 @@ import kotlin.coroutines.CoroutineContext
 class GoldFragment : Fragment() {
 
     private lateinit var tierViewModel: TierViewModel
+    private lateinit var mContext: Context
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +31,7 @@ class GoldFragment : Fragment() {
 
         Log.d(TAG, "onCreate: GOldDakcall")
 
-//        tierViewModel = ViewModelProvider(this).get(TierViewModel::class.java)
-//        tierViewModel.setEntireLeaageCall()
+
     }
 
     override fun onCreateView(
@@ -50,7 +53,30 @@ class GoldFragment : Fragment() {
         callSummerName()
     }
 
+    private fun createView(tabName:String):View {
+        var tabView = LayoutInflater.from(mContext).inflate(R.layout.customtab_button, null)
 
+
+        tabView.tab_text.text = tabName
+        when (tabName) {
+            "찾기" -> {
+                tabView.tab_logo.setImageResource(android.R.drawable.ic_menu_search)
+            }
+
+            "사진" -> {
+                tabView.tab_logo.setImageResource(android.R.drawable.ic_menu_camera)
+                return tabView
+            }
+            "전화" -> {
+                tabView.tab_logo.setImageResource(android.R.drawable.ic_menu_call)
+                return tabView
+            }
+            else -> {
+                return tabView
+            }
+        }
+
+    }
     fun callSummerName() {
         viewLifecycleOwner.lifecycleScope.launch {
             Retrofit_Manager.retrofitManager.EntireLeageCall(totalmodel = {

@@ -9,12 +9,16 @@
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/drawable/loginbtn_background.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/drawable/signup_button_background.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/activity_bronze_tab_fragment.xml" value="0.14387031408308004" />
+        <entry key="app/src/main/res/layout/activity_gold_tab_fragment.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_real_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_silver_tab_fragment.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/activity_subscribe.xml" value="0.335" />
         <entry key="app/src/main/res/layout/bronze_fragment.xml" value="0.23177083333333334" />
-        <entry key="app/src/main/res/layout/gold_fragment.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/customtab_button.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/gold_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/silver_fragment.xml" value="0.23177083333333334" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
       </map>
