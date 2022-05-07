@@ -1,10 +1,11 @@
-import Gold from './Components/Gold';
+import { Routes, Route } from 'react-router-dom';
+import MainPage from './pages/MainPage'
 
 function App() {
   return (
-    <div className="App">
-      <Gold />
-    </div>
+    <Routes>
+      <Route path='/' element={<MainPage />} />
+    </Routes>
   );
 }
 
