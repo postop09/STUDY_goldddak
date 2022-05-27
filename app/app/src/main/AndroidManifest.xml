@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.map.goldddak">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Goldddak">
         <activity
+            android:name=".mainfragment.tabfragment.BronzeTab_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".mainfragment.tabfragment.SilverTab_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".mainfragment.tabfragment.GoldTab_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".subscribeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RealMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

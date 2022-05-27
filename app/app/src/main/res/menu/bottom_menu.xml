@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"
+        />
+
+    <item
+        android:id="@+id/goldmenu"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Gold"
+        />
+
+    <item
+        android:id="@+id/silvermenu"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Silver"
+        />
+
+    <item
+        android:id="@+id/bronzemenu"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Bronze"
+        />
+
+
+</menu>

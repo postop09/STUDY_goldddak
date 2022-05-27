@@ -61,4 +61,14 @@ dependencies {
 
     // LiveData - 데이터의 변경 사항을 알 수 있음
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+
+    // Coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
+    def billing_version = "3.0.0"
+    implementation "com.android.billingclient:billing:$billing_version"
+    // (선택사항) Kotlin을 사용하신다면 추가 해 주세요
+    implementation "com.android.billingclient:billing-ktx:$billing_version"
+
 }
